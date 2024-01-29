@@ -46,7 +46,7 @@
                     onEachFeature: function (feature, layer) {
                         console.log(feature.properties);
                         if (feature.properties) {
-                            layer.bindPopup("Pop_2010: " + feature.properties.Pop_2010);
+                            layer.bindPopup("City: " + feature.properties.City + "<br>Pop_2010: " + feature.properties.Pop_2010);
                                             
                         }
                     }
