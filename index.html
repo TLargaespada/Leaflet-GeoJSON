@@ -38,44 +38,7 @@
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
 
-        var marker = L.marker([24.6283108, -82.8719411]).addTo(map);
-
-        var circle = L.circle([24.6283108, -82.8719411], {
-            color: 'red',
-            fillColor: '#f03',
-            fillOpacity: 0.5,
-            radius: 50
-        }).addTo(map);
-
-        var polygon = L.polygon([
-            [24.624938, -82.863908],
-            [24.627981, -82.865925],
-            [24.627971, -82.863983]
-        ]).addTo(map);
-
-        marker.bindPopup("<b>Bucket List!</b><br>Dry Tortugas National Park.").openPopup();
-        circle.bindPopup("I am a circle.");
-        polygon.bindPopup("I am a polygon.");
-
-        var popup = L.popup()
-            .setLatLng([24.636242090833278, -82.87451216746862])
-            .setContent("The Florida Keys.")
-            .openOn(map);
-
-        var popup = L.popup();
-
-        function onMapClick(e) {
-            popup
-                .setLatLng(e.latlng)
-                .setContent("You clicked the map at " + e.latlng.toString())
-                .openOn(map);
-        }
-
-        map.on('click', onMapClick);
-
-
-
-        map.on('click', onMapClick);
+        
 
     </script>
 
