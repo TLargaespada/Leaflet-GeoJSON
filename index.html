@@ -31,7 +31,7 @@
     <div id="map"></div>
 
     <script>
-        var map = L.map('map').setView([24.6283108, -82.8719411], 15);
+        var map = L.map('map').setView([0,0], 2);
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
@@ -40,10 +40,18 @@
 
         
     fetch('map.geojson')
-    .then(response => response.json())
-    .then(data => {
-    L.geoJSON(data).addTo(map);
-    });
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            L.geoJSON(data).addTo(map);
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
 
 
     </script>
