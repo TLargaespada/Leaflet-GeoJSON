@@ -44,6 +44,7 @@
             .then(data => {
                 L.geoJSON(data, {
                     onEachFeature: function (feature, layer) {
+                        console.log(feature.properties);
                         if (feature.properties) {
                             layer.bindPopup("Pop_2010: " + feature.properties.Pop_2010);
                                             
