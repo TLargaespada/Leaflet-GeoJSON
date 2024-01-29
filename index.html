@@ -8,7 +8,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Hello Leaflet</title>
+    <title>Leaflet GeoJSON</title>
     <link rel="shortcut icon" href="https://github.githubassets.com/favicons/favicon-dark.png" type="image/x-icon">
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -39,19 +39,19 @@
         }).addTo(map);
 
         
-    fetch('map.geojson')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            L.geoJSON(data).addTo(map);
-        })
-        .catch(error => {
-            console.error('There has been a problem with your fetch operation:', error);
-        });
+        fetch('map.geojson')
+            .then(response => response.json())
+            .then(data => {
+                L.geoJSON(data, {
+                    onEachFeature: function (feature, layer) {
+                        if (feature.properties) {
+                            layer.bindPopup("Pop_2010: " + feature.properties.Pop_2010);
+                                            
+                        }
+                    }
+                }).addTo(map);
+            })
+            .catch(error => console.error('Error:', error));
 
 
     </script>
